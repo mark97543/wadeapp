@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            /* Hide the spin buttons in WebKit browsers */
+            input::-webkit-outer-spin-button,
+            input::-webkit-inner-spin-button {
+                -webkit-appearance: none;
+                margin: 0;
+            }
+            .length, .temp, .vol, .weight{
+                display: flex;
+                flex-direction: row;
+            }
+            .select{
+                height: 100%;
+                width: 4rem;
+            }
+            .fromSelectVol, .toSelectVol{
+                width: 9rem;;
+            }
+        </style>
+        <meta charset="UTF-8">
+        <title> Wade-O-Later</title>
+        <link href="../../styles/bootstrap.css" rel="stylesheet">
+    </head>
+    <body>
+
+        <ul class="nav nav-tabs" role="tablist">
+            <li class="nav-item" role="presentation">
+                <a class="nav-link active" data-bs-toggle="tab" href="#length" aria-selected="false" role="tab" tabindex="-1">Length</a>
+            </li>
+            <li class="nav-item" role="presentation">
+                <a class="nav-link" data-bs-toggle="tab" href="#temperature" aria-selected="false" role="tab" tabindex="-1">Temperature</a>
+            </li>
+            <li class="nav-item" role="presentation">
+                <a class="nav-link" data-bs-toggle="tab" href="#volume" aria-selected="false" role="tab" tabindex="-1">Volume</a>
+            </li>
+            <li class="nav-item" role="presentation">
+                <a class="nav-link" data-bs-toggle="tab" href="#weight" aria-selected="false" role="tab" tabindex="-1">Weight</a>
+            </li>
+        </ul>
+        <div id="myTabContent" class="tab-content">
+            <div class="tab-pane fade active show" id="length" role="tabpanel">
+                <div class="length">
+                    <input type="number" class="form-control" placeholder="" id="lengthInput">
+                    <div>
+                        <select class="select" id="fromSelectLength">
+                            <option>Inch</option>
+                            <option>Foot</option>
+                            <option>Yard</option>
+                            <option>Mile</option>
+                            <option>Meter</option>
+                            <option>Kilometer</option>
+                            <option>Centimeter</option>
+                            <option>Millimeter</option>
+                        </select>
+                    </div>                    
+                    <button type="button" class="btn btn-primary" id="convertLength">Convert</button>
+                    <input class="form-control" id="lengthOutput" type="text" placeholder="Waiting...." disabled="">
+                    <div>
+                        <select class="select" id="toSelectLength">
+                            <option>Inch</option> <!--Add Foot and Inches option-->
+                            <option>Foot</option>
+                            <option>Yard</option>
+                            <option>Mile</option>
+                            <option>Meter</option>
+                            <option>Kilometer</option>
+                            <option>Centimeter</option>
+                            <option>Millimeter</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="temperature" role="tabpanel">
+                <div class="temp">
+                    <input type="number" class="form-control" placeholder="" id="tempInput">
+                    <div>
+                        <select class="select" id="fromSelectTemp">
+                            <option>C</option>
+                            <option>F</option>
+                        </select>
+                    </div>                    
+                    <button type="button" class="btn btn-primary" id="convertTemp">Convert</button>
+                    <input class="form-control" id="tempOutput" type="text" placeholder="Waiting...." disabled="">
+                </div>
+            </div>
+            </div>
+            <div class="tab-pane fade" id="volume" role="tabpanel">
+                <div class="vol">
+                    <input type="number" class="form-control" placeholder="" id="VolInput">
+                    <div>
+                        <select class="select" id="fromSelectVol">
+                            <option>OZ</option>
+                            <option>Cup</option>
+                            <option>Pint</option>
+                            <option>Quart</option>
+                            <option>Gallon</option>
+                            <option>Milliliter</option>
+                            <option>Liter</option>
+                        </select>
+                    </div>                    
+                    <button type="button" class="btn btn-primary" id="convertVol">Convert</button>
+                    <input class="form-control" id="volOutput" type="text" placeholder="Waiting...." disabled="">
+                    <div>
+                        <select class="select" id="toSelectVol">
+                            <option>OZ</option>
+                            <option>Cup</option>
+                            <option>Pint</option>
+                            <option>Quart</option>
+                            <option>Gallon</option>
+                            <option>Milliliter</option>
+                            <option>Liter</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="weight" role="tabpanel">
+                <div class="weight">
+                    <input type="number" class="form-control" placeholder="" id="weightInput">
+                    <div>
+                        <select class="select" id="fromSelectWeight">
+                            <option>OZ</option>
+                            <option>Pound</option>
+                            <option>Ton</option>
+                            <option>Milligram</option>
+                            <option>Gram</option>
+                            <option>Kilogram</option>
+                            <option>MetricTon</option>
+                        </select>
+                    </div>                    
+                    <button type="button" class="btn btn-primary" id="convertWeight">Convert</button>
+                    <input class="form-control" id="weightOutput" type="text" placeholder="Waiting...." disabled="">
+                    <div>
+                        <select class="select" id="toSelectWeight">
+                            <option>OZ</option>
+                            <option>Pound</option>
+                            <option>Ton</option>
+                            <option>Milligram</option>
+                            <option>Gram</option>
+                            <option>Kilogram</option>
+                            <option>MetricTon</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+
+
+    </body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="../../src/calculater/convert.js"></script>
+</html>

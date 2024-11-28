@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            input[type="button"]{
+                width: 100%;
+                height:100%; 
+              
+                font-size: 24px; 
+                font-weight: bold; 
+                border: none;
+
+              
+            }
+            input[type="text"] { 
+             
+                font-size: 24px; 
+                font-weight: bold; 
+                border: none;
+                width: 100%;
+                height:100%; 
+            }
+
+            .table{
+                min-width: 210px;
+                max-width: 210px;
+                margin: auto;
+                margin-top: auto;
+            }
+
+        </style>
+        <meta charset="UTF-8">
+        <title> Wade-O-Later</title>
+        <link href="../../styles/bootstrap.css" rel="stylesheet">
+    </head>
+    <body>
+        <table class="table">
+            <tr>
+                <td colspan="4"><input class="form-control" type="text" id="res"></td>
+            </tr>
+                <td><input type="button" class="btn btn-dark" id ="clear" value="c" onclick="Clear()"></td>
+                <td><input type="button" class="btn btn-dark" id="backspace" value="<-" onclick="Back()"></td>
+                <td><input type="button" class="btn btn-dark" value="%" onclick="Solve('%')"></td>
+                <td><input type="button" class="btn btn-dark" value="/" onclick="Solve('/')"></td>
+            <tr>
+                <td><input type="button" class="btn btn-dark" value="1" onclick="Solve('1')"></td>
+                <td><input type="button" class="btn btn-dark" value="2" onclick="Solve('2')"></td>
+                <td><input type="button" class="btn btn-dark" value="3" onclick="Solve('3')"></td>
+                <td><input type="button" class="btn btn-dark" value="*" onclick="Solve('*')"></td>
+            </tr>
+            <tr>
+                <td><input type="button" class="btn btn-dark" value="4" onclick="Solve('4')"></td>
+                <td><input type="button" class="btn btn-dark" value="5" onclick="Solve('5')"></td>
+                <td><input type="button" class="btn btn-dark" value="6" onclick="Solve('6')"></td>
+                <td><input type="button" class="btn btn-dark" value="-" onclick="Solve('-')"></td>
+            </tr>
+            <tr>
+                <td><input type="button" class="btn btn-dark" value="7" onclick="Solve('7')"></td>
+                <td><input type="button" class="btn btn-dark" value="8" onclick="Solve('8')"></td>
+                <td><input type="button" class="btn btn-dark" value="9" onclick="Solve('9')"></td>
+                <td><input type="button" class="btn btn-dark" value="+" onclick="Solve('+')"></td>
+            </tr>
+            <tr>
+                <td><input type="button" class="btn btn-dark" value="00" onclick="Solve('00')" ></td>
+                <td><input type="button" class="btn btn-dark" value="0" onclick="Solve('0')" ></td>
+                <td><input type="button" class="btn btn-dark" value="." onclick="Solve('.')"></td>
+                <td><input type="button" class="btn btn-dark" value="=" onclick="Result()"></td>
+            </tr>
+        </table>
+    </body>
+    <script>
+        //Add to the calculater
+        function Solve(val){
+            var v = document.getElementById('res');
+            v.value += val;
+        }
+
+        //Clear Function
+        function Clear(){
+            var inp = document.getElementById('res');
+            inp.value = '';
+        }
+        //Back Function
+        function Back(){
+            var ev = document.getElementById('res');
+            ev.value = ev.value.slice(0,-1);
+        }
+        document.addEventListener('keydown', function (event) {
+            const key = event.key;
+            const validKeys = '0123456789+-*/.%';
+            if (validKeys.includes(key)) {
+                Solve(key === '*' ? 'x' : key);
+            } else if (key === 'Enter') {
+                Result();
+            } else if (key === 'Backspace') {
+                Back();
+            } else if (key.toLowerCase() === 'c') {
+                Clear();
+            }
+        });
+        function Result() {
+            var num1 = document.getElementById('res').value;
+            try {
+                var num2 = eval(num1.replace('x', '*'));
+                document.getElementById('res').value = num2;
+            } catch {
+                document.getElementById('res').value = 'Error';
+            }
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</html>

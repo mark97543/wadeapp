@@ -1,4 +1,4 @@
-const { app, BrowserWindow, Menu } = require('electron');
+const { app, BrowserWindow, Menu, ipcMain } = require('electron');
 const path = require('node:path');
 const ejse = require('ejs-electron');
 const {mainMenu} = require(path.join(__dirname, '/startUp/menumaker.js'));
@@ -15,9 +15,17 @@ Menu.setApplicationMenu(mainMenu);
 // initialization and is ready to create browser windows.
 app.whenReady().then(() => {
   const mainWindow = createMainWindow(); 
+
 });
 
 
 
-// In this file you can include the rest of your app's specific main process
-// code. You can also put them in separate files and import them here.
+app.on('window-all-closed', () => {
+  if (process.platform !== 'darwin') {
+    
+    app.quit()
+   
+  }
+  
+})
+
